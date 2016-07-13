@@ -13,6 +13,7 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import br.gov.serpro.sped.condominio.service.RelatorioService;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -41,37 +42,39 @@ public class App {
 	public static void main(String[] args) throws FileNotFoundException, IOException, JRException {
 		LOG.info("condominio Application.");
 		
+		RelatorioService service = new RelatorioService();
+		
+		
 		// Leitura do arquivo de properties.
-		Properties parametros = new Properties();
-		parametros.load(resource("parametros.properties"));
+		Properties prop = new Properties();
+		prop.load(resource("parametros.properties"));
 		
 		// Obtenção do Mês/Ano de refereência.
-		String text = "01/" + parametros.getProperty("mes_ano_ref");
+		String text = "01/" + prop.getProperty("mes_ano_ref");
 
 		// Obtenção de datas
 		LocalDate dtRef = LocalDate.parse(text, Formatadores.FMT_PARSE);
 		LocalDate dtPag = dtRef.plusMonths(1).plusDays(9);
 		
 		// Parâmetros de relatório.
-		Map<String, Object> mapa = new HashMap<>();
-		mapa.put("pMesAnoRef", dtRef.format(Formatadores.FMT_REF));
-		mapa.put("pMesAnoPag", dtPag.format(Formatadores.FMT_PAG));
-		mapa.put("pValor", parametros.getProperty("valor"));
+		Map<String, Object> parametros = new HashMap<>();
+		parametros.put("pMesAnoRef", dtRef.format(Formatadores.FMT_REF));
+		parametros.put("pMesAnoPag", dtPag.format(Formatadores.FMT_PAG));
+		parametros.put("pValor", prop.getProperty("valor"));
 		
 		/*
 		 * Retirada dos parâmetros de relatório. 
 		 * (para aproveitar o mesmo arquivo de properties para os dados. 
 		 */
-		parametros.remove("mes_ano_ref");
-		parametros.remove("valor");
+		prop.remove("mes_ano_ref");
+		prop.remove("valor");
 		
 		// Criação do Datasource.
-		Set<Entry<Object, Object>> entrySet = parametros.entrySet();
+		Set<Entry<Object, Object>> entrySet = prop.entrySet();
 		JRBeanCollectionDataSource datasource = new JRBeanCollectionDataSource(entrySet);
 		
 		// Impressão do relatório.
-		JasperReport jasperReport = JasperCompileManager.compileReport(resource("recibos.jrxml"));
-		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, mapa, datasource);
+		JasperPrint jasperPrint = service.compilarRelatorio("recibos.jrxml", parametros, null);
 		new JasperViewer(jasperPrint).setVisible(true);
 	}
 	
