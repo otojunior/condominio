@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
-<!-- 2016-07-12T16:45:19 -->
+<!-- 2016-07-13T10:39:46 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="recibos" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cc58bf58-413e-42dc-84a9-9abd75fe26db">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<parameter name="pMesAnoRef" class="java.lang.String"/>
@@ -11,27 +11,8 @@
 	</queryString>
 	<field name="key" class="java.lang.String"/>
 	<field name="value" class="java.lang.String"/>
-	<background>
-		<band splitType="Stretch"/>
-	</background>
-	<title>
-		<band height="10" splitType="Stretch">
-			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-		</band>
-	</title>
-	<pageHeader>
-		<band height="10" splitType="Stretch">
-			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-		</band>
-	</pageHeader>
-	<columnHeader>
-		<band height="10" splitType="Stretch">
-			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-		</band>
-	</columnHeader>
 	<detail>
-		<band height="320" splitType="Stretch">
-			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+		<band height="350" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="550" height="20" uuid="ecfc616b-ed25-4d97-9d39-bac319d91cd5"/>
 				<textElement textAlignment="Center">
@@ -44,7 +25,7 @@
 				<textElement textAlignment="Center">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Belo Horizonte, 10 de " + $P{pMesAnoPag}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Belo Horizonte, " + $P{pMesAnoPag}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="120" width="550" height="20" uuid="db358493-8062-482e-a7c0-ce9281f908c4"/>
@@ -78,7 +59,7 @@
 				<textElement textAlignment="Center">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Belo Horizonte, 10 de " + $P{pMesAnoPag}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Belo Horizonte, " + $P{pMesAnoPag}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="1" y="292" width="550" height="20" uuid="856cbffc-f125-4557-b4f0-2360d86d1261"/>
@@ -100,21 +81,24 @@
 				</textElement>
 				<textFieldExpression><![CDATA["Recebi de " + $F{value} + ", apartamento " + $F{key} + " a quantia de " + $P{pValor} + " referente ao condomínio do bloco 26."]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="-15" y="150" width="585" height="1" uuid="8ebdec7c-1dfa-45f5-84f3-6940ec54b587">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="-15" y="330" width="585" height="1" uuid="77d50f3a-53cb-44d7-96a3-4348e403a530">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="10" splitType="Stretch">
-			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-		</band>
-	</columnFooter>
-	<pageFooter>
-		<band height="10" splitType="Stretch">
-			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-		</band>
-	</pageFooter>
-	<summary>
-		<band height="10" splitType="Stretch">
-			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-		</band>
-	</summary>
 </jasperReport>

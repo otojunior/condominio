@@ -3,13 +3,12 @@ package br.gov.serpro.sped.condominio;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,21 +41,35 @@ public class App {
 	public static void main(String[] args) throws FileNotFoundException, IOException, JRException {
 		LOG.info("condominio Application.");
 		
+		// Leitura do arquivo de properties.
 		Properties parametros = new Properties();
 		parametros.load(resource("parametros.properties"));
 		
+		// Obtenção do Mês/Ano de refereência.
+		String text = "01/" + parametros.getProperty("mes_ano_ref");
+
+		// Obtenção de datas
+		LocalDate dtRef = LocalDate.parse(text, Formatadores.FMT_PARSE);
+		LocalDate dtPag = dtRef.plusMonths(1).plusDays(9);
+		
+		// Parâmetros de relatório.
 		Map<String, Object> mapa = new HashMap<>();
-		mapa.put("pMesAnoRef", parametros.getProperty("mes_ano_ref"));
-		mapa.put("pMesAnoPag", parametros.getProperty("mes_ano_pag"));
+		mapa.put("pMesAnoRef", dtRef.format(Formatadores.FMT_REF));
+		mapa.put("pMesAnoPag", dtPag.format(Formatadores.FMT_PAG));
 		mapa.put("pValor", parametros.getProperty("valor"));
 		
+		/*
+		 * Retirada dos parâmetros de relatório. 
+		 * (para aproveitar o mesmo arquivo de properties para os dados. 
+		 */
 		parametros.remove("mes_ano_ref");
-		parametros.remove("mes_ano_pag");
 		parametros.remove("valor");
 		
+		// Criação do Datasource.
 		Set<Entry<Object, Object>> entrySet = parametros.entrySet();
 		JRBeanCollectionDataSource datasource = new JRBeanCollectionDataSource(entrySet);
 		
+		// Impressão do relatório.
 		JasperReport jasperReport = JasperCompileManager.compileReport(resource("recibos.jrxml"));
 		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, mapa, datasource);
 		new JasperViewer(jasperPrint).setVisible(true);
@@ -67,7 +80,7 @@ public class App {
 	 * @param resource
 	 * @return
 	 */
-	public static InputStream resource(String resource) {
+	private static InputStream resource(String resource) {
 		InputStream stream = App.class.
 			getClassLoader().
 			getResourceAsStream(resource);
