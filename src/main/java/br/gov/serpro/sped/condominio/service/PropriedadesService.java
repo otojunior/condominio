@@ -16,7 +16,7 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import br.gov.serpro.sped.condominio.Formatadores;
+import br.gov.serpro.sped.condominio.util.Formatadores;
 
 public class PropriedadesService {
 	private static final Logger LOG = LoggerFactory.getLogger(PropriedadesService.class);
@@ -40,6 +40,10 @@ public class PropriedadesService {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public Map<String, Object> obterParametros() {
 		String texto = "01/" + propriedades.getProperty("mes_ano_ref");
 		
@@ -56,6 +60,10 @@ public class PropriedadesService {
 		return parametros;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public Collection<?> obterDados() {
 		propriedades.remove("mes_ano_ref");
 		propriedades.remove("valor");

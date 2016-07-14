@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.gov.serpro.sped.condominio;
+package br.gov.serpro.sped.condominio.util;
 
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
