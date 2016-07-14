@@ -45,11 +45,9 @@ public class PropriedadesService {
 	 * @return
 	 */
 	public Map<String, Object> obterParametros() {
-		String texto = "01/" + propriedades.getProperty("mes_ano_ref");
-		
 		// Obtenção de datas.
-		LocalDate dtRef = LocalDate.parse(texto, Formatadores.FMT_PARSE);
-		LocalDate dtPag = dtRef.plusMonths(1).plusDays(9);
+		LocalDate dtRef = LocalDate.now().minusMonths(1);
+		LocalDate dtPag = LocalDate.now().withDayOfMonth(10);
 		
 		// Criação dos parâmertros.
 		Map<String, Object> parametros = new HashMap<>();
@@ -65,7 +63,6 @@ public class PropriedadesService {
 	 * @return
 	 */
 	public Collection<?> obterDados() {
-		propriedades.remove("mes_ano_ref");
 		propriedades.remove("valor");
 		
 		Set<Entry<Object, Object>> entrySet = propriedades.entrySet();
