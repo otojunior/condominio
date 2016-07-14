@@ -18,14 +18,21 @@ import org.slf4j.LoggerFactory;
 
 import br.gov.serpro.sped.condominio.util.Formatadores;
 
+/**
+ * <p>PropriedadesService class.</p>
+ *
+ * @author 01456231650
+ * @version $Id: $Id
+ */
 public class PropriedadesService {
 	private static final Logger LOG = LoggerFactory.getLogger(PropriedadesService.class);
 	
 	private Properties propriedades;
 	
 	/**
-	 * 
-	 * @param arquivo
+	 * <p>Constructor for PropriedadesService.</p>
+	 *
+	 * @param arquivo a {@link java.lang.String} object.
 	 */
 	public PropriedadesService(String arquivo) {
 		InputStream inStream = getClass().
@@ -41,8 +48,9 @@ public class PropriedadesService {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * <p>obterParametros.</p>
+	 *
+	 * @return a {@link java.util.Map} object.
 	 */
 	public Map<String, Object> obterParametros() {
 		// Obtenção de datas.
@@ -59,8 +67,9 @@ public class PropriedadesService {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * <p>obterDados.</p>
+	 *
+	 * @return a {@link java.util.Collection} object.
 	 */
 	public Collection<?> obterDados() {
 		propriedades.remove("valor");

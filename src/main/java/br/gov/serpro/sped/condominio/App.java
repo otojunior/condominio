@@ -16,7 +16,9 @@ import net.sf.jasperreports.view.JasperViewer;
 
 /**
  * Application Main Class.
+ *
  * @author [Author name]
+ * @version $Id: $Id
  */
 public class App {
 	/**
@@ -26,10 +28,11 @@ public class App {
 	
 	/**
 	 * Application main method.
+	 *
 	 * @param args Command line arguments.
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
-	 * @throws JRException 
+	 * @throws java.io.IOException if any.
+	 * @throws java.io.FileNotFoundException if any.
+	 * @throws net.sf.jasperreports.engine.JRException if any.
 	 */
 	public static void main(String[] args) throws FileNotFoundException, IOException, JRException {
 		LOG.info("condominio Application.");
@@ -41,7 +44,7 @@ public class App {
 		Collection<?> dados = propriedadesService.obterDados();
 		
 		// Impressão do relatório.
-		JasperPrint jasperPrint = relatorioService.compilarRelatorio("recibos.jrxml", parametros , dados);
+		JasperPrint jasperPrint = relatorioService.gerarRelatorio("jasper/recibos.jasper", parametros , dados);
 		new JasperViewer(jasperPrint).setVisible(true);
 	}
 }

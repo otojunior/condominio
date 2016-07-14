@@ -19,12 +19,22 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 /**
- * @author 01456231650
+ * <p>RelatorioService class.</p>
  *
+ * @author 01456231650
+ * @version $Id: $Id
  */
 public class RelatorioService {
 	private static final Logger LOG = LoggerFactory.getLogger(RelatorioService.class);
 	
+	/**
+	 * <p>compilarRelatorio.</p>
+	 *
+	 * @param relatorio a {@link java.lang.String} object.
+	 * @param parametros a {@link java.util.Map} object.
+	 * @param dados a {@link java.util.Collection} object.
+	 * @return a {@link net.sf.jasperreports.engine.JasperPrint} object.
+	 */
 	public JasperPrint compilarRelatorio(String relatorio, Map<String,Object> parametros, Collection<?> dados) {
 		JasperPrint retorno = null;
 		try {
@@ -35,6 +45,30 @@ public class RelatorioService {
 			JRDataSource datasource = new JRBeanCollectionDataSource(dados);
 			JasperReport jasperReport = JasperCompileManager.compileReport(input);
 			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametros, datasource);
+			retorno = jasperPrint;
+		} catch (JRException e) {
+			LOG.error(e.getMessage(), e);
+		}
+		return retorno;
+	}
+	
+	/**
+	 * <p>compilarRelatorio.</p>
+	 *
+	 * @param relatorio a {@link java.lang.String} object.
+	 * @param parametros a {@link java.util.Map} object.
+	 * @param dados a {@link java.util.Collection} object.
+	 * @return a {@link net.sf.jasperreports.engine.JasperPrint} object.
+	 */
+	public JasperPrint gerarRelatorio(String relatorio, Map<String,Object> parametros, Collection<?> dados) {
+		JasperPrint retorno = null;
+		try {
+			InputStream input = getClass().
+				getClassLoader().
+				getResourceAsStream(relatorio);
+			
+			JRDataSource datasource = new JRBeanCollectionDataSource(dados);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(input, parametros, datasource);
 			retorno = jasperPrint;
 		} catch (JRException e) {
 			LOG.error(e.getMessage(), e);
