@@ -1,4 +1,4 @@
-package br.gov.serpro.sped.condominio.service;
+package org.otojunior.condominio.service;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,10 +13,9 @@ import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
 
+import org.otojunior.condominio.util.Formatadores;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import br.gov.serpro.sped.condominio.util.Formatadores;
 
 /**
  * <p>PropriedadesService class.</p>

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.gov.serpro.sped.condominio.service;
+package org.otojunior.condominio.service;
 
 import java.io.InputStream;
 import java.util.Collection;

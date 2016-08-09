@@ -1,15 +1,15 @@
-package br.gov.serpro.sped.condominio;
+package org.otojunior.condominio;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
 
+import org.otojunior.condominio.service.PropriedadesService;
+import org.otojunior.condominio.service.RelatorioService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import br.gov.serpro.sped.condominio.service.PropriedadesService;
-import br.gov.serpro.sped.condominio.service.RelatorioService;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
