@@ -10,6 +10,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import javax.swing.JOptionPane;
+
 import java.util.Properties;
 import java.util.Set;
 
@@ -56,11 +59,14 @@ public class PropriedadesService {
 		LocalDate dtRef = LocalDate.now().minusMonths(1);
 		LocalDate dtPag = LocalDate.now().withDayOfMonth(10);
 		
+		String valor = JOptionPane.showInputDialog("Digite o valor [Ex.: 110,00 (Cento e Dez Reais)]:");
+		valor = "R$ " + valor;
+		
 		// Criação dos parâmertros.
 		Map<String, Object> parametros = new HashMap<>();
 		parametros.put("pMesAnoRef", dtRef.format(Formatadores.FMT_REF));
 		parametros.put("pMesAnoPag", dtPag.format(Formatadores.FMT_PAG));
-		parametros.put("pValor", propriedades.getProperty("valor"));
+		parametros.put("pValor", valor);
 		
 		return parametros;
 	}
@@ -71,8 +77,6 @@ public class PropriedadesService {
 	 * @return a {@link java.util.Collection} object.
 	 */
 	public Collection<?> obterDados() {
-		propriedades.remove("valor");
-		
 		Set<Entry<Object, Object>> entrySet = propriedades.entrySet();
 		List<Entry<Object, Object>> lst = new ArrayList<>(entrySet);
 		
