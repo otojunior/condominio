@@ -36,7 +36,7 @@
 		<plugin.version.maven-javadoc-plugin>2.9.1</plugin.version.maven-javadoc-plugin>
 		<plugin.version.maven-surefire-plugin>2.16</plugin.version.maven-surefire-plugin>
 		<plugin.version.maven-release-plugin>2.5</plugin.version.maven-release-plugin>
-		<plugin.version.sonar-maven3-plugin>4.4</plugin.version.sonar-maven3-plugin>
+		<plugin.version.sonar-maven-plugin>3.0.2</plugin.version.sonar-maven-plugin>
 	</properties>
 
 	<!-- 
@@ -241,12 +241,6 @@
 			</plugin>
 			
 			<plugin>
-				<groupId>org.codehaus.sonar</groupId>
-			    <artifactId>sonar-maven3-plugin</artifactId>
-			    <version>${plugin.version.sonar-maven3-plugin}</version>
-			</plugin>
-			
-			<plugin>
 				<groupId>com.alexnederlof</groupId>
 			    <artifactId>jasperreports-plugin</artifactId>
 			    <version>2.2</version>
@@ -257,6 +251,12 @@
 			    		</goals>
 			    	</execution>
 			    </executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+		        <artifactId>sonar-maven-plugin</artifactId>
+		        <version>${plugin.version.sonar-maven-plugin}</version>
 			</plugin>
 		</plugins>
 	</build>
