@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -33,6 +34,7 @@ public class RelatorioServiceTest {
 	 * Test method for {@link org.otojunior.condominio.service.RelatorioService#compilarRelatorio(java.lang.String, java.util.Map, java.util.Collection)}.
 	 */
 	@Test
+	@Ignore
 	public final void testCompilarRelatorio() {
 		fail("Not yet implemented"); // TODO
 	}
@@ -41,6 +43,7 @@ public class RelatorioServiceTest {
 	 * Test method for {@link org.otojunior.condominio.service.RelatorioService#gerarRelatorio(java.lang.String, java.util.Map, java.util.Collection)}.
 	 */
 	@Test
+	@Ignore
 	public final void testGerarRelatorio() {
 		fail("Not yet implemented"); // TODO
 	}

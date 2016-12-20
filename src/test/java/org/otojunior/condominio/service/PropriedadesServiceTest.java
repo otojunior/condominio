@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -33,6 +34,7 @@ public class PropriedadesServiceTest {
 	 * Test method for {@link org.otojunior.condominio.service.PropriedadesService#PropriedadesService(java.lang.String)}.
 	 */
 	@Test
+	@Ignore
 	public final void testPropriedadesService() {
 		fail("Not yet implemented"); // TODO
 	}
@@ -41,6 +43,7 @@ public class PropriedadesServiceTest {
 	 * Test method for {@link org.otojunior.condominio.service.PropriedadesService#obterParametros()}.
 	 */
 	@Test
+	@Ignore
 	public final void testObterParametros() {
 		fail("Not yet implemented"); // TODO
 	}
@@ -49,6 +52,7 @@ public class PropriedadesServiceTest {
 	 * Test method for {@link org.otojunior.condominio.service.PropriedadesService#obterDados()}.
 	 */
 	@Test
+	@Ignore
 	public final void testObterDados() {
 		fail("Not yet implemented"); // TODO
 	}
