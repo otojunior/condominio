@@ -108,7 +108,7 @@ public class RelatorioServiceTest {
 	 */
 	@Test
 	public final void testGerarRelatorioCaminhoArquivoInvalido() {
-		JasperPrint rel = service.gerarRelatorio("META-INF/MANIFEST.MF", Collections.emptyMap() , dados);
+		JasperPrint rel = service.gerarRelatorio("logback.xml", Collections.emptyMap() , dados);
 		assertNull(rel);
 	}
 }

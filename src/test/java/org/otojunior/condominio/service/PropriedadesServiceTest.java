@@ -47,14 +47,6 @@ public class PropriedadesServiceTest {
 	}
 	
 	/**
-	 * Test method for {@link org.otojunior.condominio.service.PropriedadesService#PropriedadesService(java.lang.String)}.
-	 */
-	@Test
-	public final void testPropriedadesServiceInvalido() {
-		assertNotNull(new PropriedadesService("teste.jpg"));
-	}
-
-	/**
 	 * Test method for {@link org.otojunior.condominio.service.PropriedadesService#obterDados()}.
 	 */
 	@Test
