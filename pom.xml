@@ -290,6 +290,7 @@
 				<version>4.3.0</version>
 			</plugin>
 			
+			<!--
 			<plugin>
 				<groupId>com.gavinmogan</groupId>
 			    <artifactId>codacy-maven-plugin</artifactId>
@@ -307,6 +308,7 @@
 			    	</execution>
 			    </executions>
 			</plugin>
+			-->
 		</plugins>
 		
 		<pluginManagement>

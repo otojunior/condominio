@@ -42,10 +42,14 @@ public class RelatorioService {
 				getClassLoader().
 				getResourceAsStream(relatorio);
 			
-			JRDataSource datasource = new JRBeanCollectionDataSource(dados);
-			JasperReport jasperReport = JasperCompileManager.compileReport(input);
-			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametros, datasource);
-			retorno = jasperPrint;
+			if (input != null) {
+				JRDataSource datasource = new JRBeanCollectionDataSource(dados);
+				JasperReport jasperReport = JasperCompileManager.compileReport(input);
+				JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametros, datasource);
+				retorno = jasperPrint;
+			} else {
+				LOG.error("Não encontrado arquivo \'.jrxml\' do relatório. Verifique o caminho informado.");
+			}
 		} catch (JRException e) {
 			LOG.error(e.getMessage(), e);
 		}
@@ -67,9 +71,13 @@ public class RelatorioService {
 				getClassLoader().
 				getResourceAsStream(relatorio);
 			
-			JRDataSource datasource = new JRBeanCollectionDataSource(dados);
-			JasperPrint jasperPrint = JasperFillManager.fillReport(input, parametros, datasource);
-			retorno = jasperPrint;
+			if (input != null) {
+				JRDataSource datasource = new JRBeanCollectionDataSource(dados);
+				JasperPrint jasperPrint = JasperFillManager.fillReport(input, parametros, datasource);
+				retorno = jasperPrint;
+			} else {
+				LOG.error("Não encontrado arquivo \'.jasper\' do relatório. Verifique o caminho informado.");
+			}
 		} catch (JRException e) {
 			LOG.error(e.getMessage(), e);
 		}

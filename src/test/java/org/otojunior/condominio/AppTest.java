@@ -33,9 +33,7 @@ public class AppTest {
 	 * 
 	 */
 	@Test
-	@Ignore
-	public final void testMain() {
-		fail("Not yet implemented"); // TODO
+	public final void testConstrutor() {
+		assertNotNull(new App());
 	}
-
 }

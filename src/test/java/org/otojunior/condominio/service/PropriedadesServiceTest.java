@@ -3,7 +3,12 @@
  */
 package org.otojunior.condominio.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
+
+import java.util.Collection;
+import java.util.Map;
 
 import org.junit.After;
 import org.junit.Before;
@@ -15,12 +20,14 @@ import org.junit.Test;
  *
  */
 public class PropriedadesServiceTest {
+	private PropriedadesService service;
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
+		service = new PropriedadesService("parametros.properties");
 	}
 
 	/**
@@ -28,33 +35,31 @@ public class PropriedadesServiceTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
+		service = null;
 	}
 
 	/**
 	 * Test method for {@link org.otojunior.condominio.service.PropriedadesService#PropriedadesService(java.lang.String)}.
 	 */
 	@Test
-	@Ignore
 	public final void testPropriedadesService() {
-		fail("Not yet implemented"); // TODO
+		assertNotNull(service);
 	}
-
+	
 	/**
-	 * Test method for {@link org.otojunior.condominio.service.PropriedadesService#obterParametros()}.
+	 * Test method for {@link org.otojunior.condominio.service.PropriedadesService#PropriedadesService(java.lang.String)}.
 	 */
 	@Test
-	@Ignore
-	public final void testObterParametros() {
-		fail("Not yet implemented"); // TODO
+	public final void testPropriedadesServiceInvalido() {
+		assertNotNull(new PropriedadesService("teste.jpg"));
 	}
 
 	/**
 	 * Test method for {@link org.otojunior.condominio.service.PropriedadesService#obterDados()}.
 	 */
 	@Test
-	@Ignore
 	public final void testObterDados() {
-		fail("Not yet implemented"); // TODO
+		Collection<?> dados = service.obterDados();
+		assertEquals(14, dados.size());
 	}
-
 }
