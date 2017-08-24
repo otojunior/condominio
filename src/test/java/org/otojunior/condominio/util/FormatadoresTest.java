@@ -3,13 +3,12 @@
  */
 package org.otojunior.condominio.util;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import net.sf.cglib.core.Local;
 
 /**
  * @author 01456231650

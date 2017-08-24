@@ -10,11 +10,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import javax.swing.JOptionPane;
-
 import java.util.Properties;
 import java.util.Set;
+
+import javax.swing.JOptionPane;
 
 import org.otojunior.condominio.util.Formatadores;
 import org.slf4j.Logger;
