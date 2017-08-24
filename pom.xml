@@ -49,8 +49,8 @@
 			scm:git:file://localhost/c:/temp/projeto.git
 	 -->
 	<scm>
-		<connection>scm:git:[Git Repo HTTPS URL]</connection>
-		<developerConnection>scm:git:[Git Repo URL]</developerConnection>
+		<connection>scm:git:https://github.com/otojunior/condominio.git</connection>
+		<developerConnection>scm:git:https://github.com/otojunior/condominio.git</developerConnection>
 	</scm>
 
 	<distributionManagement>
